@@ -1,0 +1,52 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+
+group = 'com.chap01.client'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	providedRuntime
+}
+
+dependencies {
+	//implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+	//implementation('org.springframework.boot:spring-boot-starter-jdbc')
+	//implementation('org.springframework.boot:spring-boot-starter-security')
+	//implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
+	//implementation('org.springframework.boot:spring-boot-starter-web')
+	//compileOnly('org.projectlombok:lombok')
+	//providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	//testImplementation('org.springframework.boot:spring-boot-starter-test')
+	//testImplementation('org.springframework.security:spring-security-test')
+	
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	//compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compileOnly('org.projectlombok:lombok')
+	compile('org.mariadb.jdbc:mariadb-java-client') //mariadb 때문에 추가
+	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.springframework.security:spring-security-test')
+}
